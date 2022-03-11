@@ -9,5 +9,3 @@ class TestChk:
     ])
     def test_checkout(self, skus, result):
         assert result == checkout(skus)
-
-

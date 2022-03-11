@@ -3,13 +3,17 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
-    if skus == 'A':
+    return [value(sku) in skus]
+
+
+def value(sku):
+    if sku == 'A':
         return 50
-    if skus == 'B':
+    if sku == 'B':
         return 30
-    if skus == 'C':
+    if sku == 'C':
         return 20
-    if skus == 'D':
+    if sku == 'D':
         return 15
     return -1
 
