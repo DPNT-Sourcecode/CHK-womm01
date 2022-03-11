@@ -32,7 +32,7 @@ def checkout(skus):
         else:
             return -1
     if offer_a > 4:
-        tmp = offer_a / 5
+        tmp = round(offer_a / 5)
         total = total - (50 * tmp)
         offer_a = offer_a % 5
     if offer_a > 2:
@@ -40,6 +40,7 @@ def checkout(skus):
     if offer_eb > 0:
         total = total - 30
     return int(total)
+
 
 
 

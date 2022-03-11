@@ -10,4 +10,5 @@ class TestChk:
         ['ABCDECBAABCABBAAAEEAA', 665]
     ])
     def test_checkout(self, skus, result):
-        assert result == checkout(skus)
+        assert checkout(skus) == result
+
