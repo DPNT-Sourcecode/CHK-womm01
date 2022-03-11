@@ -16,8 +16,8 @@ def checkout(skus):
             total = total + 50
             offer_a = offer_a + 1
         elif sku == 'B':
-            offer_b = offer_b + 1
             total = total + 30
+            offer_b = offer_b + 1
         elif sku == 'C':
             total = total + 20
         elif sku == 'D':
@@ -38,9 +38,13 @@ def checkout(skus):
         total = total - 20
     if offer_b > 1:
         total = total - (15 * math.floor(offer_b / 2))
-    if offer_eb > 0:
-        total = total - 30
+    if offer_eb > 0 and offer_b > 0:
+        if offer_eb < offer_b:
+            total = total - (30 * offer_eb)
+        else:
+            total = total - (30 * offer_b)
     return int(total)
+
 
 
 
