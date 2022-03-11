@@ -5,8 +5,9 @@ from solutions.CHK.checkout_solution import checkout
 
 class TestChk:
     @pytest.mark.parametrize('skus, result', [
-        ['A', 50], ['B', 30], ['C', 20], ['D', 15], ['E', 40], ['AAAAAA', 260], ["", 0], ["AA", 100], ["ABCD", 115], ["AxA", -1], ["AAA", 130], ['BBBB', 90]
+        ['A', 50], ['B', 30], ['C', 20], ['D', 15], ['EE', 80], ['EEE', 80], ['EEEEE', 120], ['AAAAAA', 260], ["", 0], ["AA", 100], ["ABCD", 115], ["AxA", -1], ["AAA", 130], ['BBBB', 90]
     ])
     def test_checkout(self, skus, result):
         assert result == checkout(skus)
+
 

@@ -26,8 +26,15 @@ def checkout(skus):
             total = total + 15
         elif sku == 'E':
             total = total + 40
+            offer_e = offer_e + 1
+            if offer_e == 0:
+                total = total - 40
+                offer_e = 1
+            if offer_e == 2:
+                offer_e = -1
         else:
             return -1
     return total
+
 
 
