@@ -39,11 +39,12 @@ def checkout(skus):
     if offer_b > 1:
         total = total - (15 * math.floor(offer_b / 2))
     if offer_eb > 0 and offer_b > 0:
-        if offer_eb < offer_b:
-            total = total - (30 * offer_eb)
-        else:
+        if offer_eb > offer_b:
             total = total - (30 * offer_b)
+        else:
+            total = total - (30 * offer_eb)
     return int(total)
+
 
 
 
