@@ -6,6 +6,7 @@ def checkout(skus):
     total = 0
     offer_a = 0
     offer_b = 0
+    offer_e = 0
     for sku in skus:
         if sku == 'A':
             total = total + 50
@@ -23,7 +24,10 @@ def checkout(skus):
             total = total + 20
         elif sku == 'D':
             total = total + 15
+        elif sku == 'E':
+            total = total + 40
         else:
             return -1
     return total
+
 
