@@ -4,7 +4,15 @@ import math
 
 
 def special_discount(counter, limit, price):
-    return (price * math.floor(counter / limit))
+    return price * math.floor(counter / limit)
+
+
+def max_discount(counter, max_limit, min_limit, max_price, min_price):
+    discount = 0
+    if counter > (max_limit - 1):
+        discount = special_discount(counter, max_limit, max_price)
+        counter = counter % max_limit
+    return discount + special_discount(counter, min_limit, min_price)
 
 
 def checkout(skus):
@@ -109,24 +117,25 @@ def checkout(skus):
         else:
             return -1
 
-    if offer_a > 4:
-        tmp = math.floor(offer_a / 5)
-        total = total - (50 * tmp)
-        offer_a = offer_a % 5
-    if offer_a > 2:
-        total = total - 20
-    if offer_h > 9:
-        tmp = math.floor(offer_h / 10)
-        total = total - (20 * tmp)
-        offer_h = offer_h % 10
-    if offer_h > 4:
-        total = total - 5
-    if offer_v > 2:
-        tmp = math.floor(offer_v / 3)
-        total = total - (20 * tmp)
-        offer_v = offer_v % 3
-    if offer_v > 1:
-        total = total - 10
+    discount = max_discount(offer_a, 5, 3, 50, 20) + max_discount(offer_h, 10, 5, 20, 5) + max_discount(offer_v, 3, 2, 20, 10)
+    # if offer_a > 4:
+    #     tmp = math.floor(offer_a / 5)
+    #     total = total - (50 * tmp)
+    #     offer_a = offer_a % 5
+    # if offer_a > 2:
+    #     total = total - 20
+    # if offer_h > 9:
+    #     tmp = math.floor(offer_h / 10)
+    #     total = total - (20 * tmp)
+    #     offer_h = offer_h % 10
+    # if offer_h > 4:
+    #     total = total - 5
+    # if offer_v > 2:
+    #     tmp = math.floor(offer_v / 3)
+    #     total = total - (20 * tmp)
+    #     offer_v = offer_v % 3
+    # if offer_v > 1:
+    #     total = total - 10
     if offer_eb > 0 and offer_b > 0:
         if offer_b > offer_eb:
             offer_b = offer_b - offer_eb
@@ -154,6 +163,7 @@ def checkout(skus):
         total = total - special_discount(offer_p, 5, 50)
     if offer_q > 2:
         total = total - special_discount(offer_q, 3, 10)
-    return int(total)
+    return int(total - discount)
+
 
 
