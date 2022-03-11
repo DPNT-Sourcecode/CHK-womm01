@@ -1,5 +1,3 @@
-
-
 # noinspection PyUnusedLocal
 # skus = unicode string
 import math
@@ -106,6 +104,7 @@ def checkout(skus):
             total = total + 50
         else:
             return -1
+
     if offer_a > 4:
         tmp = math.floor(offer_a / 5)
         total = total - (50 * tmp)
@@ -131,11 +130,6 @@ def checkout(skus):
         else:
             total = total - (30 * offer_b)
             offer_b = 0
-    if offer_nm > 0 and offer_m > 0:
-        if offer_m > offer_nm:
-            total = total - (15 * offer_nm)
-        else:
-            total = total - (15 * offer_m)
     if offer_rq > 0 and offer_q > 0:
         if offer_q > offer_rq:
             offer_q = offer_q - offer_rq
@@ -143,6 +137,11 @@ def checkout(skus):
         else:
             total = total - (30 * offer_q)
             offer_q = 0
+    if offer_nm > 0 and offer_m > 0:
+        if offer_m > offer_nm:
+            total = total - (15 * offer_nm)
+        else:
+            total = total - (15 * offer_m)
     if offer_b > 1:
         total = total - (15 * math.floor(offer_b / 2))
     if offer_k > 1:
@@ -152,6 +151,4 @@ def checkout(skus):
     if offer_q > 2:
         total = total - (10 * math.floor(offer_q / 3))
     return int(total)
-
-
 

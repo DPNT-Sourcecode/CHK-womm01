@@ -10,11 +10,10 @@ class TestChk:
         ['ABCDECBAABCABBAAAEEAA', 665], ['ABCDEABCDE', 280], ['H'*11, 90], ['H'*16, 135], ['KK', 150], ['KKK', 230],
         ['P'*6, 250], ['P'*9, 400], ['Q'*3, 80], ['Q'*5, 140], ['V'*4, 180], ['V'*5, 220], ['U'*4, 120], ['U'*9, 280],
         ['NNN', 120], ['NNNMNNN', 240], ['RRRQQ', 180], ['RRRQQQ', 210],
-        ['ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ', 1880]
+        ['BEFHNOPQRBEFHNOPQ', 410],
+        # ['ABCDEFGHIJKLMNOPQRSTUVWXYZ'*2, 1880],
+        # ['LGCKAQXFOSKZGIWHNRNDITVBUUEOZXPYAVFDEPTBMQLYJRSMJCWH', 1880]
 
     ])
     def test_checkout(self, skus, result):
         assert checkout(skus) == result
-
-
-
