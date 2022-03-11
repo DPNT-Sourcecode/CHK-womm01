@@ -2,6 +2,7 @@
 
 # noinspection PyUnusedLocal
 # skus = unicode string
+
 def checkout(skus):
     total = 0
     offer_a = 0
@@ -12,15 +13,12 @@ def checkout(skus):
         if sku == 'A':
             total = total + 50
             offer_a = offer_a + 1
-            if offer_a == 5:
-                offer_a = 0
-                total = total - 50
+            # if offer_a == 5:
+            #     offer_a = 0
+            #     total = total - 50
         elif sku == 'B':
-            if offer_eb > 0:
-                offer_eb = offer_eb - 1
-            else:
-                offer_b = offer_b + 1
-                total = total + 30
+            offer_b = offer_b + 1
+            total = total + 30
             if offer_b == 2:
                 offer_b = 0
                 total = total - 15
@@ -36,7 +34,13 @@ def checkout(skus):
                 offer_eb = offer_eb + 1
         else:
             return -1
-    if offer_a > 2:
-        total = total - 20
+    if offer_a > 4:
+        tmp = offer_a / 5
+        total = total - (50 * tmp)
+        if (offer_a % tmp) > 2:
+            total = total - 20
+    if offer_eb > 0:
+        total = total - 30
     return total
+
 
