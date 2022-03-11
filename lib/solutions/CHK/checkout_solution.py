@@ -34,11 +34,13 @@ def checkout(skus):
     if offer_a > 4:
         tmp = offer_a / 5
         total = total - (50 * tmp)
-        if (offer_a % tmp) > 2:
-            total = total - 20
+        offer_a = offer_a - (tmp * 5)
+    if offer_a > 2:
+        total = total - 20
     if offer_eb > 0:
         total = total - 30
     return total
+
 
 
 
