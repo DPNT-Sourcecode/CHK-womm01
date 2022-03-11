@@ -3,6 +3,10 @@
 import math
 
 
+def special_discount(counter, limit, price):
+    return (price * math.floor(counter / limit))
+
+
 def checkout(skus):
     total = 0
     offer_a = 0
@@ -143,12 +147,13 @@ def checkout(skus):
         else:
             total = total - (15 * offer_m)
     if offer_b > 1:
-        total = total - (15 * math.floor(offer_b / 2))
+        total = total - special_discount(offer_b, 2, 15)
     if offer_k > 1:
-        total = total - (10 * math.floor(offer_k / 2))
+        total = total - special_discount(offer_k, 2, 10)
     if offer_p > 4:
-        total = total - (50 * math.floor(offer_p / 5))
+        total = total - special_discount(offer_p, 5, 50)
     if offer_q > 2:
-        total = total - (10 * math.floor(offer_q / 3))
+        total = total - special_discount(offer_q, 3, 10)
     return int(total)
+
 
