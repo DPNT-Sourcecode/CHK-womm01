@@ -127,7 +127,3 @@ def checkout(skus):
         total = total - (10 * math.floor(offer_q / 3))
     return int(total)
 
-
-
-
-
