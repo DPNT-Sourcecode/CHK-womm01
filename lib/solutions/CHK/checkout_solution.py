@@ -14,8 +14,9 @@ def checkout(skus):
         elif sku == 'D':
             total = total + 15
         else:
-            total = -1
+            return total - 1
     return total
+
 
 
 
