@@ -54,7 +54,3 @@ def checkout(skus):
         total = total - (15 * math.floor(offer_b / 2))
     return int(total)
 
-
-
-
-
