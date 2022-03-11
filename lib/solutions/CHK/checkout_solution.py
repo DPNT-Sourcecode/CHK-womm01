@@ -7,9 +7,10 @@ def checkout(skus):
         return 50
     if skus == 'B':
         return 30
-    if skus == 'c':
+    if skus == 'C':
         return 20
-    if skus == 'A':
+    if skus == 'D':
         return 15
     return -1
+
 
