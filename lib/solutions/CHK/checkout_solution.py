@@ -15,6 +15,12 @@ def max_discount(counter, max_limit, min_limit, max_price, min_price):
     return discount + special_discount(counter, min_limit, min_price)
 
 
+def free_discount(counter, freebie):
+    if counter > freebie:
+        return counter - freebie
+    return 0
+
+
 def checkout(skus):
     total = 0
     offer_a = 0
@@ -30,15 +36,13 @@ def checkout(skus):
     offer_n = 0
     offer_m = 0
     offer_r = 0
-    offer_eb = 0
-    offer_nm = 0
-    offer_rq = 0
+    offer_m = 0
     for sku in skus:
         if sku == 'A':
             total = total + 50
             offer_a = offer_a + 1
         elif sku == 'B':
-            total = total + 30
+            # total = total + 30
             offer_b = offer_b + 1
         elif sku == 'C':
             total = total + 20
@@ -47,15 +51,9 @@ def checkout(skus):
         elif sku == 'E':
             total = total + 40
             offer_e = offer_e + 1
-            if offer_e == 2:
-                offer_e = 0
-                offer_eb = offer_eb + 1
         elif sku == 'F':
-            if offer_f > -1:
-                total = total + 10
+            total = total + 10
             offer_f = offer_f + 1
-            if offer_f == 2:
-                offer_f = -1
         elif sku == 'G':
             total = total + 20
         elif sku == 'H':
@@ -76,33 +74,24 @@ def checkout(skus):
         elif sku == 'N':
             total = total + 40
             offer_n = offer_n + 1
-            if offer_n == 3:
-                offer_n = 0
-                offer_nm = offer_nm + 1
         elif sku == 'O':
             total = total + 10
         elif sku == 'P':
             total = total + 50
             offer_p = offer_p + 1
         elif sku == 'Q':
-            total = total + 30
+            # total = total + 30
             offer_q = offer_q + 1
         elif sku == 'R':
             total = total + 50
             offer_r = offer_r + 1
-            if offer_r == 2:
-                offer_r = 0
-                offer_rq = offer_rq + 1
         elif sku == 'S':
             total = total + 30
         elif sku == 'T':
             total = total + 20
         elif sku == 'U':
-            if offer_u > -1:
-                total = total + 40
+            # total = total + 40
             offer_u = offer_u + 1
-            if offer_u == 3:
-                offer_u = -1
         elif sku == 'V':
             total = total + 50
             offer_v = offer_v + 1
@@ -117,44 +106,34 @@ def checkout(skus):
         else:
             return -1
 
-    discount = max_discount(offer_a, 5, 3, 50, 20) + max_discount(offer_h, 10, 5, 20, 5) + max_discount(offer_v, 3, 2, 20, 10)
-    # if offer_a > 4:
-    #     tmp = math.floor(offer_a / 5)
-    #     total = total - (50 * tmp)
-    #     offer_a = offer_a % 5
-    # if offer_a > 2:
-    #     total = total - 20
-    # if offer_h > 9:
-    #     tmp = math.floor(offer_h / 10)
-    #     total = total - (20 * tmp)
-    #     offer_h = offer_h % 10
-    # if offer_h > 4:
-    #     total = total - 5
-    # if offer_v > 2:
-    #     tmp = math.floor(offer_v / 3)
-    #     total = total - (20 * tmp)
-    #     offer_v = offer_v % 3
-    # if offer_v > 1:
-    #     total = total - 10
-    if offer_eb > 0 and offer_b > 0:
-        if offer_b > offer_eb:
-            offer_b = offer_b - offer_eb
-            total = total - (30 * offer_eb)
-        else:
-            total = total - (30 * offer_b)
-            offer_b = 0
-    if offer_rq > 0 and offer_q > 0:
-        if offer_q > offer_rq:
-            offer_q = offer_q - offer_rq
-            total = total - (30 * offer_rq)
-        else:
-            total = total - (30 * offer_q)
-            offer_q = 0
-    if offer_nm > 0 and offer_m > 0:
-        if offer_m > offer_nm:
-            total = total - (15 * offer_nm)
-        else:
-            total = total - (15 * offer_m)
+    discount = max_discount(offer_a, 5, 3, 50, 20) + max_discount(offer_h, 10, 5, 20, 5) + max_discount(
+        offer_v, 3, 2, 20, 10
+    )
+    offer_b = free_discount(offer_b, offer_e/2)
+    offer_f = free_discount(offer_f, offer_f/2)
+    offer_m = free_discount(offer_m, offer_n/3)
+    offer_q = free_discount(offer_q, offer_r/3)
+    offer_u = free_discount(offer_u, offer_u/3)
+    total = total + offer_b * 30 + offer_f * 10 + offer_m * 15 + offer_u * 40 + offer_q * 30
+    # if offer_eb > 0 and offer_b > 0:
+    #     if offer_b > offer_eb:
+    #         offer_b = offer_b - offer_eb
+    #         total = total - (30 * offer_eb)
+    #     else:
+    #         total = total - (30 * offer_b)
+    #         offer_b = 0
+    # if offer_rq > 0 and offer_q > 0:
+    #     if offer_q > offer_rq:
+    #         offer_q = offer_q - offer_rq
+    #         total = total - (30 * offer_rq)
+    #     else:
+    #         total = total - (30 * offer_q)
+    #         offer_q = 0
+    # if offer_nm > 0 and offer_m > 0:
+    #     if offer_m > offer_nm:
+    #         total = total - (15 * offer_nm)
+    #     else:
+    #         total = total - (15 * offer_m)
     if offer_b > 1:
         total = total - special_discount(offer_b, 2, 15)
     if offer_k > 1:
@@ -164,6 +143,7 @@ def checkout(skus):
     if offer_q > 2:
         total = total - special_discount(offer_q, 3, 10)
     return int(total - discount)
+
 
 
 
