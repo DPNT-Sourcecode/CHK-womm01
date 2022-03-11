@@ -19,8 +19,8 @@ def checkout(skus):
             if offer_eb > 0:
                 offer_eb = offer_eb - 1
             else:
-                total = total + 30
                 offer_b = offer_b + 1
+                total = total + 30
             if offer_b == 2:
                 offer_b = 0
                 total = total - 15
@@ -39,6 +39,7 @@ def checkout(skus):
     if offer_a > 2:
         total = total - 20
     return total
+
 
 
 
