@@ -5,20 +5,17 @@
 def checkout(skus):
     total = 0
     for sku in skus:
-        total = total + item_value(sku)
+        if sku == 'A':
+            total = total + 50
+        elif sku == 'B':
+            total = total + 30
+        elif sku == 'C':
+            total = total + 20
+        elif sku == 'D':
+            total = total + 15
+        else:
+            total = -1
     return total
-
-
-def item_value(sku):
-    if sku == 'A':
-        return 50
-    if sku == 'B':
-        return 30
-    if sku == 'C':
-        return 20
-    if sku == 'D':
-        return 15
-    return -1
 
 
 
