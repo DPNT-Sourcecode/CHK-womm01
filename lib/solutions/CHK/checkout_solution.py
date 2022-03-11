@@ -2,6 +2,8 @@
 
 # noinspection PyUnusedLocal
 # skus = unicode string
+import math
+
 
 def checkout(skus):
     total = 0
@@ -16,9 +18,6 @@ def checkout(skus):
         elif sku == 'B':
             offer_b = offer_b + 1
             total = total + 30
-            if offer_b == 2:
-                offer_b = 0
-                total = total - 15
         elif sku == 'C':
             total = total + 20
         elif sku == 'D':
@@ -32,14 +31,17 @@ def checkout(skus):
         else:
             return -1
     if offer_a > 4:
-        tmp = round(offer_a / 5)
+        tmp = math.floor(offer_a / 5)
         total = total - (50 * tmp)
         offer_a = offer_a % 5
     if offer_a > 2:
         total = total - 20
+    if offer_b > 1:
+        total = total - (15 * math.floor(offer_b / 2))
     if offer_eb > 0:
         total = total - 30
     return int(total)
+
 
 
 
