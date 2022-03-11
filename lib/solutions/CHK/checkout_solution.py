@@ -17,7 +17,10 @@ def checkout(skus):
     offer_q = 0
     offer_v = 0
     offer_u = 0
+    offer_n = 0
+    offer_m = 0
     offer_eb = 0
+    offer_nm = 0
     for sku in skus:
         if sku == 'A':
             total = total + 50
@@ -57,8 +60,13 @@ def checkout(skus):
             total = total + 90
         elif sku == 'M':
             total = total + 15
+            offer_m = offer_m + 1
         elif sku == 'N':
             total = total + 40
+            offer_n = offer_n + 1
+            if offer_n == 3:
+                offer_n = 0
+                offer_nm = offer_nm + 1
         elif sku == 'O':
             total = total + 10
         elif sku == 'P':
@@ -117,6 +125,11 @@ def checkout(skus):
         else:
             total = total - (30 * offer_b)
             offer_b = 0
+    if offer_nm > 0 and offer_m > 0:
+        if offer_m > offer_nm:
+            total = total - (15 * offer_nm)
+        else:
+            total = total - (15 * offer_m)
     if offer_b > 1:
         total = total - (15 * math.floor(offer_b / 2))
     if offer_k > 1:
@@ -126,4 +139,5 @@ def checkout(skus):
     if offer_q > 2:
         total = total - (10 * math.floor(offer_q / 3))
     return int(total)
+
 
