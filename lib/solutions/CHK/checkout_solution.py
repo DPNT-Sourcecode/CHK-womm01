@@ -20,8 +20,16 @@ def free_discount(counter, freebie):
         return counter - freebie
     return 0
 
+
 def any_buy_discount(counter_z, counter_yst, counter_x):
-    pass
+    total = (counter_z + counter_yst + counter_x) / 3 * 45
+    free = (counter_z + counter_yst + counter_x) % 3
+    if counter_x >= free:
+        return (counter_x % 3) * 17 + total
+    elif counter_yst >= free - counter_x:
+        return (counter_yst % 3) * 20 + counter_x * 17 + total
+    return (counter_z % 3) * 21 + counter_yst * 20 + counter_x * 17 + total
+
 
 def checkout(skus):
     total = 0
@@ -38,6 +46,9 @@ def checkout(skus):
     offer_n = 0
     offer_m = 0
     offer_r = 0
+    offer_sty = 0
+    offer_x = 0
+    offer_z = 0
     for sku in skus:
         if sku == 'A':
             total = total + 50
@@ -83,9 +94,9 @@ def checkout(skus):
             total = total + 50
             offer_r = offer_r + 1
         elif sku == 'S':
-            total = total + 20
+            offer_sty = offer_sty + 1
         elif sku == 'T':
-            total = total + 20
+            offer_sty = offer_sty + 1
         elif sku == 'U':
             offer_u = offer_u + 1
         elif sku == 'V':
@@ -94,11 +105,11 @@ def checkout(skus):
         elif sku == 'W':
             total = total + 20
         elif sku == 'X':
-            total = total + 17
+            offer_x = offer_x + 1
         elif sku == 'Y':
-            total = total + 20
+            offer_sty = offer_sty + 1
         elif sku == 'Z':
-            total = total + 21
+            offer_z = offer_z + 1
         else:
             return -1
 
@@ -120,5 +131,7 @@ def checkout(skus):
         total = total - special_discount(offer_p, 5, 50)
     if offer_q > 2:
         total = total - special_discount(offer_q, 3, 10)
-    return int(total - discount)
+
+    return int(any_buy_discount(offer_z, offer_sty, offer_x) + total - discount)
+
 
