@@ -35,9 +35,9 @@ def any_buy_discount(counter_z, counter_yst, counter_x):
     if counter_x <= counter:
         total = total + (counter_x * 17)
     if counter_yst <= counter:
-        total = total + (counter_x * 20)
+        total = total + (counter_yst * 20)
     if counter_z <= counter:
-        total = total + (counter_x * 21)
+        total = total + (counter_z * 21)
     return total
 
 
@@ -84,7 +84,7 @@ def checkout(skus):
         elif sku == 'J':
             total = total + 60
         elif sku == 'K':
-            total = total + 80
+            total = total + 70
             offer_k = offer_k + 1
         elif sku == 'L':
             total = total + 90
@@ -143,4 +143,5 @@ def checkout(skus):
         total = total - special_discount(offer_q, 3, 10)
 
     return int(any_buy_discount(offer_z, offer_sty, offer_x) + total - discount)
+
 
