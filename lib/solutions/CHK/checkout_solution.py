@@ -20,6 +20,8 @@ def free_discount(counter, freebie):
         return counter - freebie
     return 0
 
+def any_buy_discount(counter_z, counter_yst, counter_x):
+    pass
 
 def checkout(skus):
     total = 0
@@ -81,7 +83,7 @@ def checkout(skus):
             total = total + 50
             offer_r = offer_r + 1
         elif sku == 'S':
-            total = total + 30
+            total = total + 20
         elif sku == 'T':
             total = total + 20
         elif sku == 'U':
@@ -92,11 +94,11 @@ def checkout(skus):
         elif sku == 'W':
             total = total + 20
         elif sku == 'X':
-            total = total + 90
+            total = total + 17
         elif sku == 'Y':
-            total = total + 10
+            total = total + 20
         elif sku == 'Z':
-            total = total + 50
+            total = total + 21
         else:
             return -1
 
