@@ -136,11 +136,12 @@ def checkout(skus):
     if offer_b > 1:
         total = total - special_discount(offer_b, 2, 15)
     if offer_k > 1:
-        total = total - special_discount(offer_k, 2, 10)
+        total = total - special_discount(offer_k, 2, 20)
     if offer_p > 4:
         total = total - special_discount(offer_p, 5, 50)
     if offer_q > 2:
         total = total - special_discount(offer_q, 3, 10)
 
     return int(any_buy_discount(offer_z, offer_sty, offer_x) + total - discount)
+
 
