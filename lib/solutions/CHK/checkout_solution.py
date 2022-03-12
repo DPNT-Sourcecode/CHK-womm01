@@ -42,7 +42,6 @@ def checkout(skus):
             total = total + 50
             offer_a = offer_a + 1
         elif sku == 'B':
-            # total = total + 30
             offer_b = offer_b + 1
         elif sku == 'C':
             total = total + 20
@@ -52,7 +51,6 @@ def checkout(skus):
             total = total + 40
             offer_e = offer_e + 1
         elif sku == 'F':
-            total = total + 10
             offer_f = offer_f + 1
         elif sku == 'G':
             total = total + 20
@@ -69,7 +67,7 @@ def checkout(skus):
         elif sku == 'L':
             total = total + 90
         elif sku == 'M':
-            total = total + 15
+            # total = total + 15
             offer_m = offer_m + 1
         elif sku == 'N':
             total = total + 40
@@ -80,7 +78,6 @@ def checkout(skus):
             total = total + 50
             offer_p = offer_p + 1
         elif sku == 'Q':
-            # total = total + 30
             offer_q = offer_q + 1
         elif sku == 'R':
             total = total + 50
@@ -109,11 +106,11 @@ def checkout(skus):
     discount = max_discount(offer_a, 5, 3, 50, 20) + max_discount(offer_h, 10, 5, 20, 5) + max_discount(
         offer_v, 3, 2, 20, 10
     )
-    offer_b = free_discount(offer_b, offer_e/2)
-    offer_f = free_discount(offer_f, offer_f/2)
-    offer_m = free_discount(offer_m, offer_n/3)
-    offer_q = free_discount(offer_q, offer_r/3)
-    offer_u = free_discount(offer_u, offer_u/3)
+    offer_b = free_discount(offer_b, math.floor(offer_e/2))
+    offer_f = free_discount(offer_f, math.floor(offer_f/2))
+    offer_m = free_discount(offer_m, math.floor(offer_n/3))
+    offer_q = free_discount(offer_q, math.floor(offer_r/3))
+    offer_u = free_discount(offer_u, math.floor(offer_u/3))
     total = total + offer_b * 30 + offer_f * 10 + offer_m * 15 + offer_u * 40 + offer_q * 30
     # if offer_eb > 0 and offer_b > 0:
     #     if offer_b > offer_eb:
@@ -143,6 +140,7 @@ def checkout(skus):
     if offer_q > 2:
         total = total - special_discount(offer_q, 3, 10)
     return int(total - discount)
+
 
 
 
