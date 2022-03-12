@@ -9,7 +9,7 @@ class TestChk:
         ["", 0], ["A"*8, 330], ["ABCD", 115], ["AxA", -1], ["AAA", 130], ['BBBB', 90], ['BEBEEE', 160],
         ['ABCDECBAABCABBAAAEEAA', 665], ['ABCDEABCDE', 280], ['H'*11, 90], ['H'*16, 135], ['KK', 150], ['KKK', 230],
         ['P'*6, 250], ['P'*9, 400], ['Q'*3, 80], ['Q'*5, 140], ['V'*4, 180], ['V'*5, 220], ['U'*4, 120], ['U'*9, 280],
-        ['NNN', 120], ['NNNMNNN', 240], ['RRRQQ', 180], ['RRRQQQ', 210], ['STX', 45], ['STXYZ', 83],
+        ['NNN', 120], ['NNNMNNN', 240], ['RRRQQ', 180], ['RRRQQQ', 210], ['STX', 45], ['STXYZ', 83], ['S', 20],
         # ['ABCDEFGHIJKLMNOPQRSTUVWXYZ'*2, 1880],
         # ['LGCKAQXFOSKZGIWHNRNDITVBUUEOZXPYAVFDEPTBMQLYJRSMJCWH', 1880]
 
