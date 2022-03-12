@@ -120,8 +120,3 @@ def checkout(skus):
         total = total - special_discount(offer_q, 3, 10)
     return int(total - discount)
 
-
-
-
-
-
