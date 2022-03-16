@@ -22,23 +22,18 @@ def free_discount(counter, freebie):
 
 
 def any_buy_discount(counter_z, counter_yst, counter_x):
-    total_x = math.floor(counter_x / 3)
-    total_yst = math.floor(counter_yst / 3)
-    total_z = math.floor(counter_z / 3)
-    counter_x = counter_x - total_x
-    counter_yst = counter_yst - total_yst
-    counter_z = counter_z - total_z
-    total = math.floor((counter_z + counter_yst + counter_x) / 3) * 45
-    counter = (counter_z + counter_yst + counter_x) % 3
-    if 0 == counter:
-        return total
-    if counter_x <= counter:
-        total = total + (counter_x * 17)
-    if counter_yst <= counter:
-        total = total + (counter_yst * 20)
-    if counter_z <= counter:
-        total = total + (counter_z * 21)
-    return total
+    total = math.floor((counter_z + counter_yst + counter_x) / 3)
+    counter = total * 3
+    if counter_z >= counter:
+        counter_z = counter_z - counter
+    elif counter_yst >= counter - counter_z:
+        counter_yst = counter_yst - (counter - counter_z)
+        counter_z = 0
+    elif counter_x >= (counter - counter_yst) - counter_z:
+        counter_x = counter_x - (counter - (counter_z + counter_yst))
+        counter_z = 0
+        counter_yst = 0
+    return (total * 45) + (counter_x * 17) + (counter_yst * 20) + (counter_z * 21)
 
 
 def checkout(skus):
@@ -143,5 +138,4 @@ def checkout(skus):
         total = total - special_discount(offer_q, 3, 10)
 
     return int(any_buy_discount(offer_z, offer_sty, offer_x) + total - discount)
-
 
